@@ -1,0 +1,96 @@
+{% extends "geosem/base_gs.html" %}
+{% block content %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Информация</title>
+	<style>
+		body {
+		  background: #eee;
+		  display: inline;
+		 }
+		
+		#container {
+		  display: table;
+		  margin: 0 auto;
+		  width: 50%;
+		}
+		
+		#hypovyText {
+			background: #eee;
+			font-size: 30px;
+		  	width: 100%;
+		  	text-align: center;
+		}
+		
+		.menuP{
+		  height: 50px;
+		  width: 100%;
+		  display: block;
+			background: #eee;
+			border-radius: 7px;
+			border: 1px solid green;
+		}
+
+		.menuSP{
+		  padding: 10px 5px 5px 10px;
+		  text-align: left;
+			border-radius: 7px;
+			border: 1px solid green;
+		}
+	</style>
+	<script>
+		function OpenHide(divID) {
+		  var x = document.getElementById(divID);
+		  if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+	<p id="hypovyText">Новосибирский государственный университет (НГУ)</p>
+	<div style="background: #eee; display: flex; justify-content: center; -webkit-justify-content: center;">
+		<img src="https://pilothub.ru/datas/folio/3358-ngu.jpg" width="400" height="300" style="margin:0 auto; display: flex">
+	</div>
+	<button class="menuP" onClick='OpenHide("menuSp1")' style="margin-top: 30px">История</button>
+		<div class="menuSP" id="menuSp1" style='display:none'>
+			<p>Историческая справка</p>
+			<ul>
+			  <li>Новосибирский государственный университет (полное название — федеральное государственное бюджетное образовательное учреждение высшего профессионального образования «Новосибирский национальный исследовательский государственный университет») — один из национальных исследовательских университетов России. Университет входит в число участников Проекта 5-100 — программы повышения международной конкурентоспособности российских вузов среди ведущих мировых научно-образовательных центров.</li>
+			</ul>
+		</div>
+	<button class="menuP" onClick='OpenHide("menuSp2")'>Народные названия</button>
+		<div class="menuSP" id="menuSp2" style='display:none'>
+			<p>Некоторый текст про народные названия</p>
+			<ul>
+			  <li>"вуз"</li>
+			  <li>"Шарага"</li>
+			</ul>
+		</div>
+	<button class="menuP" onClick='OpenHide("menuSp3")'>Онтология</button>
+		<div class="menuSP" id="menuSp3" style='display:none'>
+			<p>#Некоторая справка об устройстве онтологии.<br>
+			#Об объектах, связанных определёнными отношениями с данным инстансом.<br>
+			<p></p>
+			Объект: "НГУ"<br>
+			Принадлежит к классу: "University"<br>
+			</p>
+			<div>
+			<button onClick='OpenHide("menuSp3_chain")' style='border-radius: 7px;border: 1px solid green;'>Показать ветку подклассов для "University"</button>
+			<button onClick='OpenHide("menuSp3_graph")' style='border-radius: 7px;border: 1px solid green;'>Показать граф</button>
+			</div>
+		</div>
+		<div class="menuSP" id="menuSp3_chain" style='display:none;'>
+			<img src="https://sun4-17.userapi.com/5i9xM4Lz6GqEyPe_H7qDVqSHXBJM69bCBosYQw/H3ceKcS3GZ0.jpg">
+		</div>
+	</div>
+	<div class="menuSP" id="menuSp3_graph" style='display:none;'>
+		<img src="https://sun4-16.userapi.com/PaRL3_0rtiSzgz6B3D6HZD4f8qG15awaIeD_8Q/scycfL3gB6g.jpg">
+	</div>
+</body>
+</html>
+{% endblock content %}

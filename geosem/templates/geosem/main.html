@@ -1,0 +1,15 @@
+{% extends "geosem/base_gs.html" %}
+{% block content %}
+<div id="segundum">
+	<h1 style="font-size: 50pt">GSProject</h1>
+	<div name="searchblock" action="#" style="display: flex; justify-content: center; -webkit-justify-content: center;
+		left: 50%; right: 50%">
+
+		<input type="search" placeholder="Введите топоним" id="searchMain"/>
+		<input type="button" value="Искать" onclick='window.runSearch();'/>
+
+	</div>
+	<br>
+	<p><a href="{% url 'geosem-map' %}" align="center">Перейти на карту</a></p>
+</div>
+{% endblock content %}

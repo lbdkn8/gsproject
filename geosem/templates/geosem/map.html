@@ -1,0 +1,63 @@
+{% extends "geosem/base_gs.html" %}
+{% block content %}
+<script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+<script type="text/javascript">
+    let map;
+    DG.then(function () {
+        map = DG.map('map', {
+            'center': [54.843, 83.09],
+            'zoom': 16
+        });
+
+        const searchParams = new URLSearchParams(window.location.search)
+        const userreq = searchParams.get('search')
+        if (userreq) {
+            document.getElementById('req').value = userreq;
+            search();
+        }
+
+    });
+
+    function search() {
+        const userreq = document.getElementById("req").value;
+        // const userreq = value
+        if (userreq == "нгу" || userreq == "новосибирский государственный университет") {
+            DG.marker([54.843, 83.0902]).addTo(map).bindPopup(openNav);
+            openNav();
+            map.setView([54.843, 83.09002], 16);
+        }
+    }
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "325px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        DG.marker([54.843, 83.0902]).removeFrom(map);
+    }
+
+</script>
+<div name="searchblock" action="#" style="display: flex; justify-content: center; -webkit-justify-content: center;
+                                                         top: 10px; z-index: 2; left: 50%; right: 50%">
+
+    <input type="search" value="" placeholder="Введите топоним" id="req">
+    <input type="submit" value="Искать" onclick="search()">
+
+</div>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="{% url 'geosem-info' %}" class='closebtn' style="top: 40px">></a>
+    <p id='Title'>Новосибирский государственный университет</p>
+    <a href="https://www.nsu.ru/n/" target="_blank" style="font-size: 16px;">Ссылка на сайт</a>
+    <p> Адрес: Ул.Пирогова, 1</p>
+    <p> Образовательное учреждение. Университет строился и развивался вместе с Новосибирским научным центром,
+        ориентируясь на подготовку высококвалифицированных кадров для науки и образования.</p>
+    <img src="https://pilothub.ru/datas/folio/3358-ngu.jpg"/>
+    <p>В 1960х годах в НГУ училось 460 студентов</p>
+    <p>НГУ в неформальном общении называют "X"</p>
+    <a href="{% url 'geosem-info' %}">Узнать больше</a>
+</div>
+<div class='main' id="map" style="width:100%; position: absolute; height: 100%;"></div>
+{% endblock content %}
